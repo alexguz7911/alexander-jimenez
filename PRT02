@@ -1,0 +1,8 @@
+#Alexander Jimenez #20-1205
+"""Escriba un programa que capture por teclado una cantidad de minutos y muestre por pantalla la equivalencia en horas.
+ Por ejemplo: 1000 minutos son 16 horas y 40 minutos."""
+
+minutos=int(input("introduzca el numero de minutos"))
+resultado=int((minutos *1) / 60)
+residuo= minutos % 60
+print(f"son {resultado} hora/s y {residuo} minutos")
