@@ -1,0 +1,8 @@
+# Alexander Jimenez 20-1205
+""" Desarrolle un programa que capture por teclado el valor de una temperatura en °C y realice la conversión a °F
+ y °K. Luego, mostrar los resultados de dichas conversiones."""
+celsius=float(input("introduzca el numero de celsius:"))
+Fa=celsius*(9/5) + 32
+kel= celsius + 273.15
+print("el resultado en fahrenheit",Fa)
+print("el resultado en kelvin",kel)
