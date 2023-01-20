@@ -1,3 +1,4 @@
+
 #Alexander Jimenez #20-1205
 """Se requiere escribir un programa que capture por teclado las calificaciones obtenidas en una asignatura de un 
 estudiante UNPHU, así como su nombre, y luego determine la calificación final en conjunto con la literal. 
@@ -18,3 +19,9 @@ elif nota_final >=70:
     nota_literal="C"
 elif nota_final>=60:
     nota_literal="D"
+elif nota_final<=59:
+    nota_literal="F"
+
+print("nombre",nombre)
+print("nota final",nota_final)
+print("nota literal",nota_literal)
