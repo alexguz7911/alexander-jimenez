@@ -1,0 +1,32 @@
+#Alexander Jimenez #20-1205
+"""Desarrolle un programa que permita ingresar números enteros positivos, 
+hasta que el usuario ingrese el 0. Cuando esto último ocurra, se debe imprimir
+ la siguiente información: por cada número, informar cuántos dígitos pares y 
+ cuántos impares tiene. Al finalizar, informar la cantidad de dígitos pares y
+  de dígitos impares leídos en total."""
+
+
+numeros = []
+while True:
+    numero = int(input("Ingrese un número: "))
+    if numero == 0:
+        break
+    numeros.append(numero)
+
+par_total = 0
+impar_total = 0
+for numero in numeros:
+    par = 0
+    impar = 0
+    while numero > 0:
+        digito = numero % 10
+        if digito % 2 == 0:
+            par += 1
+        else:
+            impar += 1
+        numero = numero // 10
+    par_total += par
+    impar_total += impar
+    print("Número:", numero, par, "Par", impar, "Impar")
+
+print("TOTAL:", par_total, "Pares", impar_total, "Impares")
