@@ -1,0 +1,38 @@
+#Alexander Jimenez #20-1205
+"""Ustedes son los programadores de la empresa "Minimarket Disla",
+ la cual necesita un programa que permita hacer la captura e impresión 
+ de facturas de los productos vendidos. Se requiere capturar la siguiente
+  información:"""""
+import random
+
+def capturar_datos():
+    nombre_cliente = input("Ingrese el nombre del cliente: ")
+    numero_factura = random.randint(200,9999)
+    productos = []
+    seguir = True
+    while seguir:
+        nombre_producto = input("Ingrese el nombre del producto (0 para terminar): ")
+        if nombre_producto == "0":
+            seguir = False
+        else:
+            precio = float(input("Ingrese el precio: "))
+            cantidad = int(input("Ingrese la cantidad: "))
+            productos.append({"nombre": nombre_producto, "precio": precio, "cantidad": cantidad})
+    return {"cliente": nombre_cliente, "numero": numero_factura, "productos": productos}
+
+def imprimir_factura(factura):
+    print("Cliente:", factura["cliente"])
+    print("Factura:", factura["numero"])
+    print("\n**************")
+    print("Producto", " "*7, "Precio", " "*7, "Cantidad", " "*3, "Importe")
+    total_articulos = 0
+    total_pagar = 0
+    for producto in factura["productos"]:
+        importe = producto["precio"] * producto["cantidad"]
+        total_articulos += producto["cantidad"]
+        total_pagar += importe
+        print(producto["nombre"], " "*(15-len(producto["nombre"])), "${:.2f}".format(producto["precio"]), " "*(15-len("${:.2f}".format(producto["precio"]))), producto["cantidad"], " "*(15-len(str(producto["cantidad"]))), "${:.2f}".format(importe))
+    print("\nTOTAL", " "*25, total_articulos, " "*(15-len(str(total_articulos))), "${:.2f}".format(total_pagar))
+
+factura = capturar_datos()
+imprimir_factura(factura)
