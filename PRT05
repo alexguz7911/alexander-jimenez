@@ -1,0 +1,87 @@
+#Alexander Jimenez #20-1205
+"""Desarrolle un programa que permita crear una lista de clientes y permita realizar las siguientes operaciones:
+
+Crear: agrega un nuevo cliente a la lista.
+Modificar: solicita el cliente a modificar y posteriormente se coloca el nuevo valor deseado.
+Eliminar: solicita el cliente a eliminar y posteriormente se elimina de la lista.
+Mostrar: muestra toda la lista de clientes."""
+# Clase Cliente
+class Cliente:
+    def __init__(self, nombre, direccion, telefono):
+        self.nombre = nombre
+        self.direccion = direccion
+        self.telefono = telefono
+        
+    def __str__(self):
+        return f"Nombre: {self.nombre} Direccion: {self.direccion} Telefono: {self.telefono}"
+
+# Clase ListaClientes
+class ListaClientes:
+    def __init__(self):
+        self.clientes = []
+
+    # Método para agregar un nuevo cliente
+    def agregar_cliente(self):
+        nombre = input("Ingresa el nombre del cliente: ")
+        direccion = input("Ingresa la dirección del cliente: ")
+        telefono = input("Ingresa el teléfono del cliente: ")
+        cliente = Cliente(nombre, direccion, telefono)
+        self.clientes.append(cliente)
+        print(f"Cliente {cliente} agregado a la lista.")
+
+    # Método para modificar un cliente existente
+    def modificar_cliente(self):
+        nombre = input("Ingresa el nombre del cliente a modificar: ")
+        for i in range(len(self.clientes)):
+            if self.clientes[i].nombre == nombre:
+                self.clientes[i].nombre = input("Ingresa el nuevo nombre: ")
+                self.clientes[i].direccion = input("Ingresa la nueva dirección: ")
+                self.clientes[i].telefono = input("Ingresa el nuevo teléfono: ")
+                print(f"Cliente {self.clientes[i]} ha sido modificado.")
+               
+                break
+            else:
+                print("Cliente no encontrado.")
+
+    # Método para eliminar un cliente existente
+    def eliminar_cliente(self):
+        nombre = input("Ingresa el nombre del cliente a eliminar: ")
+        for i in range(len(self.clientes)):
+            if self.clientes[i].nombre == nombre:
+                del self.clientes[i]
+                print(f"Cliente {nombre} ha sido eliminado.")
+                break
+        else:
+            print("Cliente no encontrado.")
+
+    # Método para mostrar todos los clientes en la lista
+    def mostrar_clientes(self):
+        if not self.clientes:
+            print("La lista de clientes está vacía.")
+        else:
+            for cliente in self.clientes:
+                print(cliente)
+lista = ListaClientes()
+
+while True:
+# Menú de opciones
+    print("\nMenú de opciones")
+    print("1. Agregar cliente")
+    print("2. Modificar cliente")
+    print("3. Eliminar cliente")
+    print("4. Mostrar clientes")
+    print("5. Salir")
+    opcion = int(input("Selecciona una opción: "))
+    if opcion == 1:
+        lista.agregar_cliente()
+    elif opcion == 2:
+        lista.modificar_cliente()
+    elif opcion == 3:
+        lista.eliminar_cliente()
+    elif opcion == 4:
+        lista.mostrar_clientes()
+    elif opcion == 5:
+        print("Programa finalizado.")
+    
+    else:
+        print("opcion invalida")
